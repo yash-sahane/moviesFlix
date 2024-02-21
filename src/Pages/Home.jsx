@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 
 const Home = () => {
     const [popularMovies, setPopularMovies] = useState([]);
+
     const URL =
         'https://api.themoviedb.org/3/movie/popular?api_key=a6a58dcd45183909f4b677c89d9fb805&language=en-US';
 
@@ -38,7 +39,6 @@ const Home = () => {
                     showStatus={false}
                 >
                     {popularMovies.map((movie, index) => {
-                        console.log(movie);
                         return (
                             <Link style={{ textDecoration: "none", color: "white" }} to={`/movie/${movie.id}`} >
                                 <div className="posterImage">

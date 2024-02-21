@@ -21,7 +21,7 @@ const Card = ({ movie, isLoading }) => {
                         <div className="card__title">{movie ? movie.original_title : ""}</div>
                         <div className="card__runtime">
                             {movie ? movie.release_date : ""}
-                            <span className="card__rating">{movie ? movie.vote_average : ""}<i className="fas fa-star" /></span>
+                            <span className="card__rating">{movie ? movie.vote_average.toFixed(1) : ""}<i className="fas fa-star" /></span>
                         </div>
                         <div className="card__description">{movie ? movie.overview.slice(0, 118) + "..." : ""}</div>
                     </div>

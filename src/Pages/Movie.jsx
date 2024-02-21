@@ -1,16 +1,17 @@
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom';
+import Skeleton from 'react-loading-skeleton';
 import './Movie.css';
 
 const Movie = () => {
     const [movieInfo, setMoviesInfo] = useState({});
+    const [loading, setLoading] = useState(true);
     const { id } = useParams();
     const URL =
         `https://api.themoviedb.org/3/movie/${id}?api_key=a6a58dcd45183909f4b677c89d9fb805&language=en-US`;
 
     useEffect(() => {
         const fetchMovies = async () => {
-            // setIsLoading(true);
             try {
                 const response = await fetch(URL);
                 if (!response.ok) {
@@ -18,14 +19,41 @@ const Movie = () => {
                 }
                 const data = await response.json();
                 setMoviesInfo(data);
+                setLoading(false);
             } catch (e) {
                 console.log(e.message);
             }
-            // setIsLoading(false);
         };
 
         fetchMovies();
-    }, []);
+    }, [URL]);
+
+    if (loading) {
+        // Display loading skeleton while data is being fetched
+        return (
+            <div className="movie">
+                <Skeleton height={500} />
+                <div className="movie__detail">
+                    <div className="movie__detailLeft">
+                        <Skeleton height={300} width={200} />
+                    </div>
+                    <div className="movie__detailRight">
+                        <Skeleton height={40} width={300} />
+                        <Skeleton height={20} width={150} />
+                        <Skeleton height={20} width={150} />
+                        <Skeleton height={20} width={150} />
+                        <Skeleton height={20} width={150} />
+                        <div className="movie__genres">
+                            <Skeleton height={30} width={100} />
+                            <Skeleton height={30} width={100} />
+                            <Skeleton height={30} width={100} />
+                        </div>
+                        <Skeleton height={200} />
+                    </div>
+                </div>
+            </div>
+        );
+    }
 
     return (
         <div className="movie">
@@ -42,7 +70,7 @@ const Movie = () => {
                             <div className="movie__name">{movieInfo ? movieInfo.original_title : ""}</div>
                             <div className="movie__tagline">{movieInfo ? movieInfo.tagline : ""}</div>
                             <div className="movie__rating">
-                                {movieInfo ? movieInfo.vote_average : ""} <i className="fas fa-star" />
+                                {movieInfo ? movieInfo.vote_average?.toFixed(1) : ""} <i className="fas fa-star" />
                                 <span className="movie__voteCount">{movieInfo ? "(" + movieInfo.vote_count + ") votes" : ""}</span>
                             </div>
                             <div className="movie__runtime">{movieInfo ? movieInfo.runtime + " mins" : ""}</div>
@@ -50,12 +78,10 @@ const Movie = () => {
                             <div className="movie__genres">
                                 {
                                     movieInfo && movieInfo.genres
-                                        ?
-                                        movieInfo.genres.map(genre => (
-                                            <><span className="movie__genre" id={genre.id}>{genre.name}</span></>
+                                        ? movieInfo.genres.map(genre => (
+                                            <span className="movie__genre" key={genre.id} id={genre.id}>{genre.name}</span>
                                         ))
-                                        :
-                                        ""
+                                        : null // Use null instead of an empty string
                                 }
                             </div>
                         </div>
@@ -79,17 +105,17 @@ const Movie = () => {
             <div className="movie__heading">Production companies</div>
             <div className="movie__production">
                 {
-                    movieInfo && movieInfo.production_companies && movieInfo.production_companies.map(company => (
-                        <>
+                    movieInfo && movieInfo.production_companies && movieInfo.production_companies.map((company, index) => (
+                        <span className="productionCompanyImage" key={index}>
                             {
                                 company.logo_path
                                 &&
-                                <span className="productionCompanyImage">
+                                <>
                                     <img className="movie__productionComapany" src={"https://image.tmdb.org/t/p/original" + company.logo_path} />
                                     <span>{company.name}</span>
-                                </span>
+                                </>
                             }
-                        </>
+                        </span>
                     ))
                 }
             </div>

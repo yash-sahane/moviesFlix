@@ -4,12 +4,13 @@
     position: relative;
     border-radius: 10px;
     overflow: hidden;
-    margin: 0.19rem;
+    margin: 0.50rem;
     cursor: pointer;
     min-width: 200px;
     height: 300px;
     z-index: 0;
     border: 1px solid rgb(99, 99, 99);
+    box-shadow: 0 4px 8px 0 rgba(255, 255, 255, 0.2), 0 6px 20px 0 rgba(255, 255, 255, 0.19);
 }
 
 .cards:hover {

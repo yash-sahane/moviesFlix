@@ -13,11 +13,14 @@
 }
 
 a>span {
-    margin: 0 30px;
     font-size: 1.3rem;
     cursor: pointer;
     color: white;
     font-family: "Montserrat", sans-serif;
+}
+
+.link{
+    margin: 0 40px 0 0;
 }
  
 a>span:hover {
