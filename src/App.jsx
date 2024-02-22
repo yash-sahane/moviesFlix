@@ -5,6 +5,7 @@ import Movie from './Pages/Movie'
 import Header from './Components/Header'
 import Movies from './Pages/Movies'
 import './App.css'
+import Genre from './Pages/Genre_'
 
 const App = () => {
   return (
@@ -15,6 +16,7 @@ const App = () => {
           <Route path='/' element={<Home />}></Route>
           <Route path='/movie/:id' element={<Movie />}></Route>
           <Route path='/movies/:type' element={<Movies />}></Route>
+          <Route path='/genre' element={<Genre />}></Route>
         </Routes>
       </Router>
     </div>
