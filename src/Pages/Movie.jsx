@@ -70,7 +70,7 @@ const Movie = () => {
                             <div className="movie__name">{movieInfo ? movieInfo.original_title : ""}</div>
                             <div className="movie__tagline">{movieInfo ? movieInfo.tagline : ""}</div>
                             <div className="movie__rating">
-                                {movieInfo ? movieInfo.vote_average?.toFixed(1) : ""} <i className="fas fa-star" />
+                                {movieInfo ? movieInfo.vote_average?.toFixed(1) : ""}<i className="fa-solid fa-star fa-xs" style={{ color: "#FFD43B", marginLeft: '3px' }}></i>
                                 <span className="movie__voteCount">{movieInfo ? "(" + movieInfo.vote_count + ") votes" : ""}</span>
                             </div>
                             <div className="movie__runtime">{movieInfo ? movieInfo.runtime + " mins" : ""}</div>

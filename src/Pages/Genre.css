@@ -1,0 +1,10 @@
+.genre-title{
+    padding: 10px 0 10px 10px;
+}
+
+.carousel .control-dots {
+    position: absolute;
+    bottom: 20px;
+    width: 100%;
+    text-align: center;
+}

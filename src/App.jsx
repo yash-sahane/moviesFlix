@@ -5,7 +5,7 @@ import Movie from './Pages/Movie'
 import Header from './Components/Header'
 import Movies from './Pages/Movies'
 import './App.css'
-import Genre from './Pages/Genre_'
+import Genre from './Pages/Genre'
 
 const App = () => {
   return (

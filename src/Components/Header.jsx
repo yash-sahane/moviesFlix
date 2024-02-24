@@ -2,8 +2,6 @@ import React, { useEffect, useState } from 'react';
 import './Header.css'; // Import your stylesheet for additional styling
 import { Link } from 'react-router-dom';
 import logo from '../assets/logo.jpg';
-import Select from 'react-select';
-import genres from '../assets/genres.js';
 
 const Header = () => {
     return (
