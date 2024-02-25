@@ -35,7 +35,7 @@
 
 .posterImage__title {
     font-weight: 900;
-    font-size: 2rem;
+    font-size: 4rem;
     /* Reduced font size */
     margin-bottom: 0.4rem;
     text-align: left;
@@ -55,7 +55,7 @@
 
 .posterImage__description {
     font-style: italic;
-    font-size: 0.8rem;
+    font-size: 1rem;
     /* Reduced font size */
     margin-bottom: 0.25rem;
     display: flex;

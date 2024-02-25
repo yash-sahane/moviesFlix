@@ -97,6 +97,7 @@ const Genre = () => {
                                     <img src={`https://image.tmdb.org/t/p/original${movie.backdrop_path}`} alt={movie.title} />
                                     <div className="posterImage__overlay">
                                         <div className="posterImage__title">{movie.original_title}</div>
+                                        <div className="posterImage__description">{movie ? movie.overview : ""}</div>
                                     </div>
                                 </div>
                             </Link>

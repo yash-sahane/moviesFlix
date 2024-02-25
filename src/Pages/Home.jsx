@@ -3,6 +3,7 @@ import "react-responsive-carousel/lib/styles/carousel.min.css";
 import './Home.css';
 import { Carousel } from 'react-responsive-carousel';
 import { Link } from 'react-router-dom';
+import Movies from './Movies';
 
 const Home = () => {
     const [popularMovies, setPopularMovies] = useState([]);
@@ -51,7 +52,7 @@ const Home = () => {
                                     <div className="posterImage__runtime">
                                         {movie ? movie.release_date : ""}
                                         <span className="posterImage__rating">
-                                            {movie ? movie.vote_average.toFixed(1) : ""}<i className="fa-solid fa-star fa-xs" style={{ color: "#FFD43B", marginLeft: '3px' }}></i>{" "}
+                                            {movie ? ' ' + movie.vote_average.toFixed(1) : ""}<i className="fa-solid fa-star fa-xs" style={{ color: "#FFD43B", marginLeft: '3px' }}></i>{" "}
                                         </span>
                                     </div>
                                     <div className="posterImage__description">{movie ? movie.overview : ""}</div>
@@ -61,6 +62,7 @@ const Home = () => {
                     })}
                 </Carousel>
             )}
+            <Movies />
         </div>
     );
 };
