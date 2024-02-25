@@ -22,6 +22,7 @@ const Movies = () => {
                 }
                 const data = await response.json();
                 setMovies(data.results);
+                document.title = type.charAt(0).toUpperCase() + type.slice(1);
             } catch (e) {
                 console.log(e.message);
             }

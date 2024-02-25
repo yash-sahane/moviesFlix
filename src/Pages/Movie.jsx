@@ -22,6 +22,7 @@ const Movie = () => {
                 const data = await response.json();
                 setMoviesInfo(data);
                 setLoading(false);
+                document.title = data.title
             } catch (e) {
                 console.log(e.message);
             }

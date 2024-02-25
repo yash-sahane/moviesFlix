@@ -50,6 +50,7 @@ const Genre = () => {
 
                 setMoviesByGenres(moviesByGenresObj);
                 setLoading(false);
+                document.title = 'Genre';
             } catch (error) {
                 console.error(error.message);
             }

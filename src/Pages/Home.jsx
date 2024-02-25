@@ -21,6 +21,7 @@ const Home = () => {
                 const data = await response.json();
                 console.log(data.results);
                 setPopularMovies(data.results);
+                document.title = 'Home';
             } catch (e) {
                 console.log(e.message);
             }
