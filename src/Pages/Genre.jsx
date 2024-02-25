@@ -9,13 +9,13 @@ import './Genre.css';
 const Genre = () => {
     const [moviesByGenres, setMoviesByGenres] = useState({});
     const [loading, setLoading] = useState(true);
+    const apiKey = import.meta.env.VITE_API_KEY;
 
     useEffect(() => {
         const fetchMoviesByGenres = async () => {
             try {
-                // Fetch the list of genres
                 const genresResponse = await fetch(
-                    'https://api.themoviedb.org/3/genre/movie/list?api_key=a6a58dcd45183909f4b677c89d9fb805&language=en-US'
+                    `https://api.themoviedb.org/3/genre/movie/list?api_key=${apiKey}&language=en-US`
                 );
                 if (!genresResponse.ok) {
                     throw new Error('Failed to fetch genres');
@@ -27,7 +27,7 @@ const Genre = () => {
                 }, {});
 
                 // Fetch movies for each genre
-                const genreIds = [28, 12, 18, 35, 80, 14, 27, 10749]; // Example genre IDs
+                const genreIds = [28, 12, 18, 35, 80, 14, 27, 10749];
                 const promises = genreIds.map(async (genreId) => {
                     const response = await fetch(
                         `https://api.themoviedb.org/3/discover/movie?api_key=a6a58dcd45183909f4b677c89d9fb805&language=en-US&with_genres=${genreId}`
@@ -43,7 +43,7 @@ const Genre = () => {
                 const moviesByGenresObj = results.reduce(
                     (acc, { genreName, movies }) => ({
                         ...acc,
-                        [genreName]: movies.slice(0, 20), // Limit to 20 movies per genre
+                        [genreName]: movies.slice(0, 20),
                     }),
                     {}
                 );

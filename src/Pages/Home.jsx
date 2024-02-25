@@ -1,14 +1,15 @@
 import React, { useEffect, useState } from 'react';
-import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
+import "react-responsive-carousel/lib/styles/carousel.min.css";
 import './Home.css';
 import { Carousel } from 'react-responsive-carousel';
 import { Link } from 'react-router-dom';
 
 const Home = () => {
     const [popularMovies, setPopularMovies] = useState([]);
+    const apiKey = import.meta.env.VITE_API_KEY;
 
     const URL =
-        'https://api.themoviedb.org/3/movie/popular?api_key=a6a58dcd45183909f4b677c89d9fb805&language=en-US';
+        `https://api.themoviedb.org/3/movie/popular?api_key=${apiKey}&language=en-US`;
 
     useEffect(() => {
         const fetchMovies = async () => {
@@ -40,7 +41,7 @@ const Home = () => {
                 >
                     {popularMovies.map((movie, index) => {
                         return (
-                            <Link style={{ textDecoration: "none", color: "white" }} to={`/movie/${movie.id}`} >
+                            <Link key={index} style={{ textDecoration: "none", color: "white" }} to={`/movie/${movie.id}`} >
                                 <div className="posterImage">
                                     <img src={`https://image.tmdb.org/t/p/original${movie && movie.backdrop_path}`} />
                                 </div>

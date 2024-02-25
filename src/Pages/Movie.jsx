@@ -7,8 +7,10 @@ const Movie = () => {
     const [movieInfo, setMoviesInfo] = useState({});
     const [loading, setLoading] = useState(true);
     const { id } = useParams();
+    const apiKey = import.meta.env.VITE_API_KEY;
+
     const URL =
-        `https://api.themoviedb.org/3/movie/${id}?api_key=a6a58dcd45183909f4b677c89d9fb805&language=en-US`;
+        `https://api.themoviedb.org/3/movie/${id}?api_key=${apiKey}&language=en-US`;
 
     useEffect(() => {
         const fetchMovies = async () => {
