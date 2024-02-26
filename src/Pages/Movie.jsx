@@ -22,6 +22,7 @@ const Movie = () => {
                 const data = await response.json();
                 setMoviesInfo(data);
                 setLoading(false);
+                console.log(data);
                 document.title = data.title
             } catch (e) {
                 console.log(e.message);
@@ -92,35 +93,8 @@ const Movie = () => {
                             <div className="synopsisText">Synopsis</div>
                             <div>{movieInfo ? movieInfo.overview : ""}</div>
                         </div>
-
                     </div>
                 </div>
-            </div>
-            <div className="movie__links">
-                <div className="movie__heading">Useful Links</div>
-                {
-                    movieInfo && movieInfo.homepage && <a href={movieInfo.homepage} target="_blank" style={{ textDecoration: "none" }}><p><span className="movie__homeButton movie__Button">Homepage <i className="newTab fas fa-external-link-alt"></i></span></p></a>
-                }
-                {
-                    movieInfo && movieInfo.imdb_id && <a href={"https://www.imdb.com/title/" + movieInfo.imdb_id} target="_blank" style={{ textDecoration: "none" }}><p><span className="movie__imdbButton movie__Button">IMDb<i className="newTab fas fa-external-link-alt"></i></span></p></a>
-                }
-            </div>
-            <div className="movie__heading">Production companies</div>
-            <div className="movie__production">
-                {
-                    movieInfo && movieInfo.production_companies && movieInfo.production_companies.map((company, index) => (
-                        <span className="productionCompanyImage" key={index}>
-                            {
-                                company.logo_path
-                                &&
-                                <>
-                                    <img className="movie__productionComapany" src={"https://image.tmdb.org/t/p/original" + company.logo_path} />
-                                    <span>{company.name}</span>
-                                </>
-                            }
-                        </span>
-                    ))
-                }
             </div>
         </div>
     )
